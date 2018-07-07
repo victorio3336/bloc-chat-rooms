@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+
 import './App.css';
 import RoomList from './components/RoomList';
 import * as firebase from 'firebase';
@@ -26,13 +26,13 @@ class App extends Component {
     return (
       <div className="App">
       <header>
-      <h1 className="App-title">Chat Rooms></h1>
+      <h1 className="App-title">Chat Rooms</h1>
       <nav>
-      <Link to='/'>RoomList</Link>
+      
       </nav>
       </header>
       <main>
-      <Route exact path="/" component={RoomList} />
+    <RoomList firebase={firebase}/>
       </main>
       </div>
     );
