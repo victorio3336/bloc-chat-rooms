@@ -7,6 +7,7 @@ this.state = {
     rooms: []
 }
 
+
 this.roomsRef = this.props.firebase.database().ref('rooms');
 }
 
@@ -18,9 +19,23 @@ componentDidMount() {
   room.key = snapshot.key;
   console.log('room list mounting', room);
   this.setState({ rooms: this.state.rooms.concat( room ) })
-  });
+  }); 
 }
 
+handleChange(e) {
+this.setState({ newRoom: e.target.value })
+}
+
+
+handleSubmit(e) {
+  e.preventDefault();
+  console.log('hola');
+ // this.roomsRef.push({
+   //name: newRoomName
+  //});
+  //this.set.State({ newRoomName: ""});
+
+}
 
 
 
@@ -36,6 +51,11 @@ componentDidMount() {
   <li key={index}>
   {room.name}
   </li>)}
+  <form id="createRoom" onSubmit={ (e) => this.handleSubmit(e) }>
+  <input type="text"  value={ this.state.newRoom} onChange={ (e) => this.handleChange(e)} />
+  <input type="submit" />
+  </form>
+
   </section> 
      );
     }
