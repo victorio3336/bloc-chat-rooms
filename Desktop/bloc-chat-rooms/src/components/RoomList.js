@@ -32,7 +32,7 @@ this.setState({ newRoom: e.target.value })
 handleSubmit(e) { 
 e.preventDefault();
 this.roomsRef.push({ 
-  name: e
+  name: this.state.newRoom
 }); 
 
 }
