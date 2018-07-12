@@ -32,9 +32,9 @@ this.setState({ newRoom: e.target.value })
 handleSubmit(e) { 
 e.preventDefault();
 this.roomsRef.push({ 
-  name: this.state.newRoom
+name: this.state.newRoom
 }); 
-
+this.setState({newRoom:""});
 }
 
 
