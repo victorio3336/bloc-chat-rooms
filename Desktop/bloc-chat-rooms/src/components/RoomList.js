@@ -37,26 +37,21 @@ name: this.state.newRoom
 this.setState({newRoom:""});
 }
 
-
-
-  
-    
-    
-
-
-  render() {
+render() {
   return(
-    <section className="rooms">
+    <div>
+  <ul className="room-list">
   {this.state.rooms.map( (room, index)=>
-  <li key={index}>
-  {room.name}
-  </li>)}
+ <li key={index}>
+ <button className="roomName" onClick={ () => this.props.setRoom(room)}>{room.name}</button>
+</li>)}
+</ul>
   <form id="createroomform" onSubmit={ (e) => this.handleSubmit(e) }>
  <input type="text"  value={ this.state.newRoom} onChange={ (e) => this.handleChange(e)} placeholder="Create a new room"/>
   <button>Submit</button>
   </form>
 
-  </section> 
+  </div> 
      );
     }
   }
