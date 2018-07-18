@@ -14,9 +14,11 @@ class MessageList extends Component {
   }
     
     this.messagesRef = this.props.firebase.database().ref('messages');
-    
+    //this.createMessage = this.createMessage.bind(this);
+    //this.handleChange = this.handleChange.bind(this);
     }
     
+  
     
     
     
@@ -30,7 +32,9 @@ class MessageList extends Component {
       });
     }
 
-   
+    //handleChange(e) {
+     // this.setState({ newMessage: e.target.value });
+ // }
   
     
 
@@ -44,10 +48,10 @@ class MessageList extends Component {
 if (this.props.activeRoom.key === message.roomId) {
  return <li key={ index }> {message.username} says: {message.content} </li>
 }
-console.log(this.props.activeRoom)
-console.log(message.roomId)
+
     })}
   </ul>
+
 </div>
     )
   }

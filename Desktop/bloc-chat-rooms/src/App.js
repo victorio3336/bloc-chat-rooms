@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 import * as firebase from 'firebase';
 
 
@@ -22,12 +23,27 @@ class App extends Component {
 constructor(props) {
 super(props);
 this.state = {
-activeRoom : {},  
+activeRoom : '',
+activeMessage: '',
+currentUser: ''
+
 };
+
+
+this.setRoom = this.setRoom.bind(this);
+this.setMessage = this.setMessage.bind(this);
+this.setUser = this.setUser.bind(this);
 }
 
 setRoom(room) {
   this.setState({activeRoom : room});
+}
+setMessage(message) {
+  this.setState({ activeMessage: message })
+}
+
+setUser(user) {
+  this.setState({currentUser: user});
 }
 
 
@@ -41,7 +57,8 @@ setRoom(room) {
        <RoomList firebase={firebase}
     activeRoom={this.state.activeRoom} setRoom={(room) => this.setRoom(room)}/>
     </nav>
-      <MessageList firebase={firebase} activeRoom={this.state.activeRoom} activeUser={this.state.activeUser} setUser={this.setUser}/>
+    <User firebase = { firebase } setUser={this.setUser.bind(this)} currentUser={ this.state.currentUser }  />
+    <MessageList firebase = { firebase } activeRoom={this.state.activeRoom} messages={ this.state.messages } username={this.state.currentUser}/> 
      </div>
     );
   }
